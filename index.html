@@ -1,0 +1,34 @@
+<html>
+<head><title>Context search</title>
+<style>
+</style>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<p>
+<div>Context</div>
+<input id='context' size='60'/>
+</p>
+<p>
+<div>Specific terms</div>
+<input id='subcontext' size='60'/>
+</p>
+<p>Hitting Enter in the “Specific terms” input will Google the
+combination of words from both inputs.
+(<a href="https://github.com/tbnorth/searcher">on GitHub</a>)
+</p>
+</body>
+<script>
+jQ = jQuery
+
+function do_search() {
+    url = 'http://google.com/search?q=' +
+        jQ('#context').val() + ' ' +jQ('#subcontext').val()
+    window.open(url,'_blank')
+}
+
+jQ('#subcontext').change(do_search)
+</script>
+</html>
+
+
