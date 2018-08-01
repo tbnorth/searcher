@@ -1,6 +1,12 @@
 <html>
 <head><title>Context search</title>
 <style>
+* {
+  font-size 150%;
+  color: #bbb;
+  background: #121;
+  font-family: sans-serif;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
@@ -12,6 +18,7 @@
 <p>
 <div>Specific terms</div>
 <input id='subcontext' size='60'/>
+<button>Go</button>
 </p>
 <p>Hitting Enter in the “Specific terms” input will Google the
 combination of words from both inputs.
@@ -27,7 +34,14 @@ function do_search() {
     window.open(url,'_blank')
 }
 
-jQ('#subcontext').change(do_search)
+function do_enter(event) {
+    if (event.which == 13) {
+        do_search()
+    }
+}
+
+jQ('button').click(do_search)
+jQ('#subcontext').keypress(do_enter)
 </script>
 </html>
 
